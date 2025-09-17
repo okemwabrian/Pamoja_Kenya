@@ -1,0 +1,101 @@
+<div class="container shares-container my-5 p-4 border rounded" style="max-width: 600px;">
+  <h2 class="mb-4 text-success fw-bold" style="color: #007A3D;">Purchase Shares</h2>
+
+  <form (ngSubmit)="onSubmit()" #sharesForm="ngForm" novalidate>
+
+    <!-- Full Name -->
+    <div class="mb-3">
+      <label for="fullName" class="form-label fw-semibold" style="color: #000000;">Full Name</label>
+      <input
+        type="text"
+        id="fullName"
+        name="fullName"
+        [(ngModel)]="formData.fullName"
+        class="form-control border border-success"
+        placeholder="John Doe"
+        required
+      />
+      <div *ngIf="sharesForm.submitted && !sharesForm.controls['fullName']?.valid" class="text-danger mt-1">
+        Full Name is required.
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="mb-3">
+      <label for="email" class="form-label fw-semibold" style="color: #000000;">Email</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        [(ngModel)]="formData.email"
+        class="form-control border border-success"
+        placeholder="john@example.com"
+        required
+      />
+      <div *ngIf="sharesForm.submitted && !sharesForm.controls['email']?.valid" class="text-danger mt-1">
+        A valid email is required.
+      </div>
+    </div>
+
+    <!-- Number of Shares -->
+    <div class="mb-3">
+      <label for="shares" class="form-label fw-semibold" style="color: #000000;">Number of Shares</label>
+      <input
+        type="number"
+        id="shares"
+        name="shares"
+        [(ngModel)]="formData.shares"
+        class="form-control border border-success"
+        required
+        min="1"
+      />
+      <div *ngIf="sharesForm.submitted && !sharesForm.controls['shares']?.valid" class="text-danger mt-1">
+        Please enter at least 1 share.
+      </div>
+    </div>
+
+    <!-- Payment Method -->
+    <div class="mb-3">
+      <label for="paymentMethod" class="form-label fw-semibold" style="color: #000000;">Preferred Payment Method</label>
+      <select
+        id="paymentMethod"
+        name="paymentMethod"
+        [(ngModel)]="formData.paymentMethod"
+        class="form-select border border-success"
+        required
+      >
+        <option value="" disabled selected>Select payment method</option>
+        <option value="paypal">PayPal</option>
+        <option value="bank">Bank Transfer</option>
+        <option value="card">Credit/Debit Card</option>
+      </select>
+      <div *ngIf="sharesForm.submitted && !sharesForm.controls['paymentMethod']?.valid" class="text-danger mt-1">
+        Please select a payment method.
+      </div>
+    </div>
+
+    <!-- Comments -->
+    <div class="mb-3">
+      <label for="comments" class="form-label fw-semibold" style="color: #000000;">Additional Notes (Optional)</label>
+      <textarea
+        id="comments"
+        name="comments"
+        [(ngModel)]="formData.comments"
+        rows="4"
+        class="form-control border border-success"
+        placeholder="Your notes here..."
+      ></textarea>
+    </div>
+
+    <!-- Submit Button -->
+    <button
+      type="submit"
+      class="btn btn-success fw-bold"
+      [disabled]="!sharesForm.form.valid"
+      style="background-color: #007A3D; border-color: #007A3D;"
+    >
+      Submit Request
+    </button>
+
+  </form>
+</div>

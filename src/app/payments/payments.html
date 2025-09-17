@@ -1,0 +1,20 @@
+<div class="container my-5">
+  <h2 class="text-success mb-4">Complete Your Payment</h2>
+
+  <div *ngIf="registrationData; else noData">
+    <h4>Summary</h4>
+    <p><strong>Name:</strong> {{ registrationData.firstName }} {{ registrationData.lastName }}</p>
+    <p><strong>Email:</strong> {{ registrationData.email }}</p>
+    <p><strong>Total to Pay:</strong> $627.30</p>
+
+    <div id="paypal-button-container"></div>
+
+    <div *ngIf="paymentCompleted" class="alert alert-success mt-3">
+      Payment completed successfully! Thank you.
+    </div>
+  </div>
+
+  <ng-template #noData>
+    <p>No registration data found. Please register first.</p>
+  </ng-template>
+</div>

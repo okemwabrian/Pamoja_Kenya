@@ -1,0 +1,8 @@
+.btn-outline-dark {
+  border-color: #000;
+  color: #000;
+}
+.btn-outline-dark:hover {
+  background-color: #000;
+  color: #fff;
+}
